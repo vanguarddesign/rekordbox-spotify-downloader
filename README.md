@@ -66,7 +66,7 @@ Now you can build a complete Rekordbox library from your Spotify playlists with 
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/rekordbox-spotify-downloader.git
+git clone https://github.com/Dixter999/rekordbox-spotify-downloader.git
 cd rekordbox-spotify-downloader
 ```
 
@@ -302,7 +302,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ### Development Setup
 ```bash
-git clone https://github.com/YOUR_USERNAME/rekordbox-spotify-downloader.git
+git clone https://github.com/Dixter999/rekordbox-spotify-downloader.git
 cd rekordbox-spotify-downloader
 python3 -m venv venv
 source venv/bin/activate
@@ -382,7 +382,7 @@ This project stands on the shoulders of amazing open-source work:
 
 If you encounter any issues or have questions:
 
-1. Check the [Issues](https://github.com/YOUR_USERNAME/rekordbox-spotify-downloader/issues) page
+1. Check the [Issues](https://github.com/Dixter999/rekordbox-spotify-downloader/issues) page
 2. Open a new issue with:
    - Your OS and Python version
    - Error message/log
