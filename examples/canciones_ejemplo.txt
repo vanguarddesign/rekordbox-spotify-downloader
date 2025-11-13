@@ -1,0 +1,43 @@
+# Lista de canciones para descargar
+# Formato: Artista - Canción
+# Las líneas que empiezan con # son comentarios
+
+# House / Tech House
+Disclosure - Latch
+Duke Dumont - Ocean Drive
+CamelPhat - Cola
+Fisher - Losing It
+
+# Techno
+Adam Beyer - Your Mind
+Charlotte de Witte - Selected
+Amelie Lens - Feel It
+
+# Deep House
+Nora En Pure - Saltwater
+Bob Moses - Tearing Me Up
+Lane 8 - Brightest Lights
+
+# Bass House
+AC Slater - Bass Inside
+Jauz - Feel The Volume
+Destructo - Party Up
+
+# Melodic Techno
+Tale Of Us - Monument
+Artbat - Horizon
+Mind Against - Walking Away
+
+# UK Garage
+MJ Cole - Sincere
+Artful Dodger - Re-Rewind
+
+# Drum & Bass
+Netsky - Come Alive
+High Contrast - If We Ever
+Wilkinson - Afterglow
+
+# Ejemplo de DJ sets populares
+Eric Prydz - Opus
+Deadmau5 - Strobe
+Gesaffelstein - Pursuit
