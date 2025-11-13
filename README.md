@@ -97,6 +97,16 @@ brew install ffmpeg eigen fftw libsamplerate libyaml
 
 ## 📖 Usage
 
+> **⚠️ Important Note About Repositories:**
+>
+> This project uses **TWO separate repositories**:
+> 1. **This repo** (rekordbox-spotify-downloader) - Main tool for downloading and KEY detection
+> 2. **[spotify-backup](https://github.com/caseychu/spotify-backup)** - Third-party tool for extracting Spotify playlists (only needed if you use Option 2)
+>
+> **If you don't use Spotify playlists**, you only need this repo (Option 1)!
+
+---
+
 ### Option 1: Download from a Simple Song List (No Spotify Needed)
 
 **1. Create a text file with song names:**
