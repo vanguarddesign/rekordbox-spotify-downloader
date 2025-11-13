@@ -1,0 +1,5 @@
+# Map all Claude Code attributions to the main author
+# This ensures GitHub only shows Daniel Lagowski as contributor
+
+Daniel Lagowski <daniel@lagowski.es> Claude <noreply@anthropic.com>
+Daniel Lagowski <daniel@lagowski.es> claude <noreply@anthropic.com>
