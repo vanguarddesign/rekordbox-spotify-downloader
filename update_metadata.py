@@ -163,7 +163,7 @@ except Exception as e:
             return
 
         print(f"\n{'='*60}")
-        print(f"  Procesando: {directory}")
+        print(f"  Processing: {directory}")
         print(f"  Total de archivos: {len(mp3_files)}")
         print(f"{'='*60}")
 

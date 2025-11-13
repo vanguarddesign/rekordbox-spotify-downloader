@@ -7,7 +7,7 @@ import json
 import sys
 
 def extract_playlists(json_file, playlist_names, output_file="spotify_extracted.txt"):
-    """Extrae canciones de playlists específicas"""
+    """Extrae songs de playlists específicas"""
 
     with open(json_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -23,7 +23,7 @@ def extract_playlists(json_file, playlist_names, output_file="spotify_extracted.
             tracks = playlist.get('tracks', [])
             stats[playlist_name] = len(tracks)
 
-            print(f"📂 {playlist_name}: {len(tracks)} canciones")
+            print(f"📂 {playlist_name}: {len(tracks)} songs")
 
             for track in tracks:
                 artist = track.get('artist', '')
@@ -40,7 +40,7 @@ def extract_playlists(json_file, playlist_names, output_file="spotify_extracted.
     # Guardar en archivo TXT
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(f"# Playlists de Spotify: {', '.join(playlist_names)}\n")
-        f.write(f"# Total de canciones: {len(all_tracks)}\n\n")
+        f.write(f"# Total de songs: {len(all_tracks)}\n\n")
 
         for track in all_tracks:
             f.write(f"{track}\n")
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     playlists = ["HOUSE", "POP"]
 
     print(f"{'='*60}")
-    print(f"  Extrayendo playlists de Spotify")
+    print(f"  Extracting Spotify playlists")
     print(f"{'='*60}\n")
 
     tracks, stats, output_file = extract_playlists(json_file, playlists)
@@ -72,13 +72,13 @@ if __name__ == "__main__":
     print(f"{'='*60}")
 
     for playlist_name, count in stats.items():
-        print(f"  {playlist_name}: {count} canciones")
+        print(f"  {playlist_name}: {count} songs")
 
-    print(f"\n  Total único: {len(tracks)} canciones")
+    print(f"\n  Total único: {len(tracks)} songs")
     print(f"  Archivo generado: {output_file}")
 
     print(f"\n{'='*60}")
-    print(f"  Primeras 10 canciones:")
+    print(f"  Primeras 10 songs:")
     print(f"{'='*60}")
 
     for i, track in enumerate(tracks[:10], 1):

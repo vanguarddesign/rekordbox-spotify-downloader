@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 YouTube to Rekordbox MP3 Downloader - Enhanced Version
-Con filtros de calidad, detección de KEY musical y duración mínima
+With quality filters, musical KEY detection and minimum duration
 """
 
 import os
@@ -18,17 +18,17 @@ class YouTubeToRekordbox:
         self.output_dir.mkdir(exist_ok=True)
         self.failed_downloads = []
         self.skipped_songs = []
-        self.min_duration = min_duration  # Duración mínima en segundos (1:30 = 90s)
-        self.main_folder = main_folder  # Carpeta principal para agrupar (HOUSE, POP, etc)
+        self.min_duration = min_duration  # Minimum duration in seconds (1:30 = 90s)
+        self.main_folder = main_folder  # Main folder for grouping (HOUSE, POP, etc)
 
     def sanitize_filename(self, name):
-        """Limpia nombres de archivo para evitar caracteres problemáticos"""
+        """Cleans filenames to avoid problematic characters"""
         name = re.sub(r'[<>:"/\\|?*]', '', name)
         name = re.sub(r'\s+', ' ', name)
         return name.strip()
 
     def parse_song_line(self, line):
-        """Parse una línea del archivo: 'Artista - Canción'"""
+        """Parse a line from the file: 'Artista - Canción'"""
         line = line.strip()
         if not line or line.startswith('#'):
             return None, None
@@ -44,10 +44,10 @@ class YouTubeToRekordbox:
         return artist, song
 
     def should_skip_song(self, title):
-        """Verifica si la canción debe ser omitida por filtros de calidad"""
+        """Checks if the song should be skipped due to quality filters"""
         title_lower = title.lower()
 
-        # Filtros de baja calidad
+        # Low quality filters
         skip_keywords = [
             'unreleased',
             'live',
@@ -62,12 +62,12 @@ class YouTubeToRekordbox:
 
         for keyword in skip_keywords:
             if keyword in title_lower:
-                return True, f"contiene '{keyword}'"
+                return True, f"contains '{keyword}'"
 
         return False, None
 
     def get_video_info(self, search_query):
-        """Obtiene información del video antes de descargar"""
+        """Gets video information before downloading"""
         try:
             ytdlp_path = "venv/bin/yt-dlp" if os.path.exists("venv/bin/yt-dlp") else "yt-dlp"
 
@@ -89,13 +89,13 @@ class YouTubeToRekordbox:
                     'uploader': info.get('uploader', '')
                 }
         except Exception as e:
-            print(f"    ⚠ No se pudo obtener info del video: {str(e)}")
+            print(f"    ⚠ Could not get video info: {str(e)}")
 
         return None
 
     def musical_to_camelot(self, key_str):
-        """Convierte notación musical (C# major) a Camelot (8B)"""
-        # Mapeo de notas y escalas a Camelot
+        """Converts musical notation (C# major) to Camelot (8B)"""
+        # Mapeo de notas y escalas to Camelot
         camelot_map = {
             # Major keys (B suffix)
             'C major': '8B',
@@ -136,7 +136,7 @@ class YouTubeToRekordbox:
         return camelot_map.get(key_str, key_str)
 
     def detect_key(self, audio_file):
-        """Detecta la KEY musical usando essentia y convierte a Camelot"""
+        """Detecta la KEY musical usando essentia y convierte to Camelot"""
         try:
             # Intentar con essentia primero (más preciso para KEY)
             cmd = [
@@ -161,7 +161,7 @@ except Exception as e:
             if result.returncode == 0 and "ESSENTIA_NOT_INSTALLED" not in result.stdout:
                 key_info = result.stdout.strip()
                 if key_info and "ERROR" not in key_info:
-                    # Convertir a Camelot
+                    # Convertir to Camelot
                     camelot_key = self.musical_to_camelot(key_info)
                     return camelot_key
 
@@ -210,7 +210,7 @@ except Exception as e:
 
     def download_song(self, artist, song, index, total):
         """Descarga una canción usando yt-dlp con filtros de calidad"""
-        # Si hay una carpeta principal definida, usar esa en lugar de por artista
+        # If main folder is defined, use that instead of artist folders
         if self.main_folder:
             artist_dir = self.output_dir / self.main_folder
         else:
@@ -221,7 +221,7 @@ except Exception as e:
         try:
             artist_dir.mkdir(parents=True, exist_ok=True)
         except Exception as e:
-            print(f"    ⚠ Error creando carpeta, usando alternativa")
+            print(f"    ⚠ Error creating folder, using alternative")
             if not self.main_folder:
                 artist_clean = re.sub(r'[&]', 'and', artist_clean)
                 artist_dir = self.output_dir / artist_clean
@@ -229,11 +229,11 @@ except Exception as e:
 
         search_query = f"ytsearch1:{artist} {song} audio"
 
-        print(f"\n[{index}/{total}] Procesando: {artist} - {song}")
-        print(f"    Carpeta: {artist_dir}")
+        print(f"\n[{index}/{total}] Processing: {artist} - {song}")
+        print(f"    Folder: {artist_dir}")
 
         # Paso 1: Obtener información del video
-        print(f"    🔍 Buscando video...")
+        print(f"    🔍 Searching for video...")
         video_info = self.get_video_info(search_query)
 
         if not video_info:
@@ -245,7 +245,7 @@ except Exception as e:
         should_skip, reason = self.should_skip_song(video_info['title'])
         if should_skip:
             print(f"    ⊘ OMITIDO: {reason}")
-            print(f"    Título: {video_info['title']}")
+            print(f"    Title: {video_info['title']}")
             self.skipped_songs.append(f"{artist} - {song} ({reason})")
             return False
 
@@ -259,9 +259,9 @@ except Exception as e:
             return False
 
         # Paso 4: Descargar
-        print(f"    ✓ Título: {video_info['title']}")
-        print(f"    ⏱ Duración: {duration // 60}:{duration % 60:02d}")
-        print(f"    ⬇ Descargando...")
+        print(f"    ✓ Title: {video_info['title']}")
+        print(f"    ⏱ Duration: {duration // 60}:{duration % 60:02d}")
+        print(f"    ⬇ Downloading...")
 
         try:
             ytdlp_path = "venv/bin/yt-dlp" if os.path.exists("venv/bin/yt-dlp") else "yt-dlp"
@@ -292,16 +292,16 @@ except Exception as e:
                 if downloaded_files:
                     latest_file = max(downloaded_files, key=os.path.getctime)
 
-                    print(f"    🎵 Detectando KEY musical...")
+                    print(f"    🎵 Detecting musical KEY...")
                     key = self.detect_key(str(latest_file))
 
                     if key:
-                        print(f"    🎹 KEY detectada: {key}")
+                        print(f"    🎹 KEY detected: {key}")
                         self.add_key_metadata(str(latest_file), key)
                     else:
                         print(f"    ℹ KEY no detectada (requiere essentia)")
 
-                print(f"    ✓ Descargado exitosamente")
+                print(f"    ✓ Downloaded successfully")
                 return True
             else:
                 print(f"    ✗ Error en descarga")
@@ -320,7 +320,7 @@ except Exception as e:
             return False
 
     def process_file(self, input_file):
-        """Procesa el archivo con la lista de canciones"""
+        """Processes the file with the song list"""
         if not Path(input_file).exists():
             print(f"Error: El archivo '{input_file}' no existe")
             return
@@ -333,32 +333,32 @@ except Exception as e:
                     songs.append((artist, song))
 
         if not songs:
-            print("No se encontraron canciones válidas en el archivo")
+            print("No valid songs found in file")
             return
 
         print(f"═══════════════════════════════════════════════")
         print(f"  YouTube to Rekordbox MP3 Downloader Enhanced")
         print(f"═══════════════════════════════════════════════")
-        print(f"Total de canciones: {len(songs)}")
+        print(f"Total songs: {len(songs)}")
         print(f"Directorio de salida: {self.output_dir.absolute()}")
-        print(f"Duración mínima: {self.min_duration // 60}:{self.min_duration % 60:02d}")
+        print(f"Duration mínima: {self.min_duration // 60}:{self.min_duration % 60:02d}")
         print(f"Filtros: UNRELEASED, Live, duración < 1:30")
         print(f"═══════════════════════════════════════════════\n")
 
         for i, (artist, song) in enumerate(songs, 1):
             self.download_song(artist, song, i, len(songs))
 
-        # Resumen final
+        # Final summary
         print(f"\n{'═'*50}")
         print(f"  RESUMEN DE DESCARGAS")
         print(f"{'═'*50}")
-        print(f"Total procesadas: {len(songs)}")
-        print(f"✓ Exitosas: {len(songs) - len(self.failed_downloads) - len(self.skipped_songs)}")
-        print(f"⊘ Omitidas: {len(self.skipped_songs)}")
-        print(f"✗ Fallidas: {len(self.failed_downloads)}")
+        print(f"Total processed: {len(songs)}")
+        print(f"✓ Successful: {len(songs) - len(self.failed_downloads) - len(self.skipped_songs)}")
+        print(f"⊘ Skippeds: {len(self.skipped_songs)}")
+        print(f"✗ Failed: {len(self.failed_downloads)}")
 
         if self.skipped_songs:
-            print(f"\n⊘ Canciones omitidas (baja calidad):")
+            print(f"\n⊘ Songs skipped (baja calidad):")
             for song in self.skipped_songs:
                 print(f"   - {song}")
 
@@ -368,21 +368,21 @@ except Exception as e:
                 print(f"   - {song}")
 
         print(f"\n📁 Canciones guardadas en: {self.output_dir.absolute()}")
-        print(f"\n💡 Próximo paso: Importa la carpeta en Rekordbox")
+        print(f"\n💡 Next step: Import the folder into Rekordbox")
         print(f"💡 Para KEY detection: pip install essentia mutagen")
 
 
 def main():
     if len(sys.argv) < 2:
-        print("Uso: python youtube_to_rekordbox_enhanced.py <archivo_canciones.txt> [duracion_minima] [carpeta_principal]")
+        print("Uso: python youtube_to_rekordbox_enhanced.py <song_list.txt> [min_duration] [main_folder]")
         print("\nEjemplo:")
-        print("  python youtube_to_rekordbox_enhanced.py mis_canciones.txt")
-        print("  python youtube_to_rekordbox_enhanced.py mis_canciones.txt 120 HOUSE")
+        print("  python youtube_to_rekordbox_enhanced.py my_songs.txt")
+        print("  python youtube_to_rekordbox_enhanced.py my_songs.txt 120 HOUSE")
         sys.exit(1)
 
     input_file = sys.argv[1]
     min_duration = int(sys.argv[2]) if len(sys.argv) > 2 else 90  # Default 1:30
-    main_folder = sys.argv[3] if len(sys.argv) > 3 else None  # Carpeta principal opcional
+    main_folder = sys.argv[3] if len(sys.argv) > 3 else None  # Folder principal opcional
     output_dir = "rekordbox_music"
 
     downloader = YouTubeToRekordbox(output_dir, min_duration, main_folder)
@@ -391,3 +391,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
