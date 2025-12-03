@@ -308,16 +308,16 @@ This project integrates several powerful tools:
   YouTube to Rekordbox MP3 Downloader Enhanced
 ═══════════════════════════════════════════════
 
-[1/267] Procesando: Martin Garrix - Animals
-    Carpeta: rekordbox_music/HOUSE
-    🔍 Buscando video...
-    ✓ Título: Martin Garrix - Animals (Official Video)
-    ⏱ Duración: 5:20
-    ⬇ Descargando...
-    🎵 Detectando KEY musical...
-    🎹 KEY detectada: 4A
-    💾 BPM detectado: 128
-    ✓ Descargado exitosamente
+[1/267] Processing: Martin Garrix - Animals
+    Folder: rekordbox_music/HOUSE
+    🔍 Searching video...
+    ✓ Title: Martin Garrix - Animals (Official Video)
+    ⏱ Duration: 5:20
+    ⬇ Downloading...
+    🎵 Detecting musical KEY...
+    🎹 KEY detected: 4A
+    💾 BPM detected: 128
+    ✓ Downloaded successfully
 ```
 
 ---
